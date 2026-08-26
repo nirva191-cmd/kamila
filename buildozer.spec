@@ -46,8 +46,8 @@ android.permissions = INTERNET,RECORD_AUDIO
 android.api = 33
 android.minapi = 24
 
-# Para la primera compilación usamos únicamente ARM64.
-android.archs = arm64-v8a
+# Usar armeabi-v7a para evitar errores de compilación cruzada en GitHub Actions.
+android.archs = armeabi-v7a
 
 # Aceptar automáticamente las licencias del Android SDK.
 android.accept_sdk_license = True
@@ -65,4 +65,4 @@ android.debug_artifact = apk
 [buildozer]
 
 log_level = 2
-warn_on_root = 1
+warn_on_root
