@@ -40,8 +40,8 @@ fullscreen = 0
 # ANDROID
 # ============================================================
 
-# Permisos utilizados por la aplicación.
-android.permissions = INTERNET,RECORD_AUDIO
+# Permisos utilizados por la aplicación (incluyendo almacenamiento y audio/internet).
+android.permissions = INTERNET,RECORD_AUDIO,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 
 # Versión de Android.
 android.api = 33
