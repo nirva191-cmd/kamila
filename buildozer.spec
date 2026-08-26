@@ -47,7 +47,7 @@ android.api = 33
 android.minapi = 24
 
 # Usar armeabi-v7a para evitar errores de compilación cruzada en GitHub Actions.
-android.archs = arm64-v8a
+android.archs = armeabi-v7a, arm64-v8a
 
 # Aceptar automáticamente las licencias del Android SDK.
 android.accept_sdk_license = True
