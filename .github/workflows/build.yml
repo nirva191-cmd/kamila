@@ -1,4 +1,4 @@
-Name: Compilar APK con Buildozer
+name: Compilar APK con Buildozer
 
 on:
   push:
@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-
     - name: Copiar código del repositorio
       uses: actions/checkout@v4
 
@@ -67,3 +66,4 @@ jobs:
       with:
         name: Kamila-AI-APK
         path: bin/*.apk
+        
