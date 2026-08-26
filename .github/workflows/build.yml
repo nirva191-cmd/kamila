@@ -38,19 +38,28 @@ jobs:
           libssl-dev \
           automake
 
-    - name: Verificar versiones
-      run: |
-        python3 --version
-        pip3 --version
-        java -version
-        javac -version
+    - name: Configurar Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
 
     - name: Instalar Buildozer y Cython
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install buildozer cython==0.29.36
 
+    - name: Verificar configuración
+      run: |
+        python3 --version
+        pip3 --version
+        java -version
+        javac -version
+        buildozer --version
+
     - name: Compilar APK con Buildozer
+      env:
+        PYTHONFORANDROID_PREREQUISITES_INSTALL_INTERACTIVE: "0"
       run: |
         buildozer -v android debug
 
