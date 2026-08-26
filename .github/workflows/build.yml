@@ -1,4 +1,4 @@
-name: Compilar APK con Buildozer (Docker)
+name: Compilar APK con Buildozer
 
 on:
   push:
@@ -8,17 +8,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    
-    # Contenedor oficial de Kivy
-    container:
-      image: kivy/buildozer:latest
 
     steps:
     - name: Copiar código del repositorio
       uses: actions/checkout@v4
 
-    - name: Corregir permisos de Git
-      run: git config --global --safe.directory /__w/kamila/kamila
+    - name: Configurar Java 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Instalar dependencias de Python y Buildozer
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install --upgrade setuptools wheel
+        python3 -m pip install --upgrade cython==0.29.36 buildozer
 
     - name: Compilar APK con Buildozer
       run: |
