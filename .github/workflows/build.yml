@@ -1,9 +1,8 @@
-name: Compilar APK con Buildozer
+Name: Compilar APK con Buildozer
 
 on:
   push:
     branches: [ main ]
-
   workflow_dispatch:
 
 jobs:
@@ -18,7 +17,6 @@ jobs:
     - name: Instalar dependencias del sistema
       run: |
         sudo apt update
-
         sudo apt install -y \
           git \
           zip \
@@ -47,7 +45,7 @@ jobs:
     - name: Instalar Buildozer y Cython
       run: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install buildozer cython==0.29.36
+        python3 -m pip install --upgrade buildozer cython==0.29.36
 
     - name: Verificar configuración
       run: |
@@ -69,3 +67,4 @@ jobs:
       with:
         name: Kamila-AI-APK
         path: bin/*.apk
+        
