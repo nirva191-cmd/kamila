@@ -4,23 +4,51 @@ on:
   push:
     branches: [ main ]
 
+  workflow_dispatch:
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
+
     - name: Copiar código del repositorio
       uses: actions/checkout@v4
 
-    - name: Instalar dependencias de Python
+    - name: Instalar dependencias del sistema
       run: |
         sudo apt update
-        sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+
+        sudo apt install -y \
+          git \
+          zip \
+          unzip \
+          openjdk-17-jdk \
+          python3-pip \
+          python3-virtualenv \
+          autoconf \
+          libtool \
+          pkg-config \
+          zlib1g-dev \
+          libncurses5-dev \
+          libncursesw5-dev \
+          libtinfo5 \
+          cmake \
+          libffi-dev \
+          libssl-dev \
+          automake
+
+    - name: Verificar versiones
+      run: |
+        python3 --version
+        pip3 --version
+        java -version
+        javac -version
 
     - name: Instalar Buildozer y Cython
       run: |
-        pip3 install --upgrade pip
-        pip3 install cython==0.29.36 buildozer
+        python3 -m pip install --upgrade pip
+        python3 -m pip install buildozer cython==0.29.36
 
     - name: Compilar APK con Buildozer
       run: |
@@ -28,7 +56,7 @@ jobs:
 
     - name: Guardar el APK generado
       uses: actions/upload-artifact@v4
+      if: success()
       with:
-        name: app-debug-apk
+        name: Kamila-AI-APK
         path: bin/*.apk
-        
