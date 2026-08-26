@@ -1,31 +1,32 @@
 [app]
 
+# (str) Title of your application
 title = KAMILAIA
-package.name = KMILA
+
+# (str) Package name
+package.name = kmila
+
+# (str) Package domain (needed for android packaging)
 package.domain = org.test
 
+# (str) Source file where the main.py is located
 source.dir = .
+
+# (list) Source files to include (let empty to include all files)
 source.include_exts = py,png,jpg,jpeg,kv,atlas,json
+
+# (list) Source files to exclude (let empty to not exclude anything)
 source.exclude_dirs = tests,bin,venv,.git,.buildozer
 
+# (str) Application versioning
 version = 0.1
+
+# (str) Icon of the application
+icon.filename = %(source.dir)s/logo.png
 
 # ============================================================
 # DEPENDENCIAS
 # ============================================================
-# Dependencias necesarias para Android.
-#
-# NO incluir:
-# - pyttsx3
-# - SpeechRecognition
-# - requests
-# - urllib3
-# - certifi
-# - openssl
-#
-# Las dos primeras son utilizadas por la aplicación en escritorio.
-# urllib, json, base64, threading, etc. ya vienen con Python.
-#
 requirements = python3,kivy,plyer
 
 # ============================================================
@@ -46,7 +47,7 @@ android.permissions = INTERNET,RECORD_AUDIO
 android.api = 33
 android.minapi = 24
 
-# Usar armeabi-v7a para evitar errores de compilación cruzada en GitHub Actions.
+# Arquitecturas compatibles (permite arm64-v8a para celulares modernos)
 android.archs = armeabi-v7a, arm64-v8a
 
 # Aceptar automáticamente las licencias del Android SDK.
