@@ -67,4 +67,3 @@ jobs:
       with:
         name: Kamila-AI-APK
         path: bin/*.apk
-        
